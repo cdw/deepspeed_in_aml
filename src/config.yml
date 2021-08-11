@@ -1,0 +1,28 @@
+model: distilbert-base-uncased
+task: cola # from GLUE
+task_dataset_version: 2 # AzureML dataset version
+experiment: training-quickstart # name of experiment in AzureML
+description: distilbert for linguistic acceptability
+metric: matthews_correlation
+val_key: validation
+data_dir: data/glue/cola
+source_directory: src # name of dir in which compute nodes will execute cmd
+environment: deepspeed-transformers
+training_command: python train.py
+compute_target: gpu-K80-1
+model_output_dir: outputs/model
+registered_model_name: distilbert-base-uncased-cola
+pytorch_configuration:
+    node_count: 2 # num of computers in cluster
+    process_count: 2 # gpus-per-computer * node_count
+training_args:
+    output_dir: outputs
+    overwrite_output_dir: true
+    do_eval: true
+    evaluation_strategy: epoch
+    num_train_epochs: 3
+    per_device_train_batch_size: 16
+    per_device_eval_batch_size: 16
+    disable_tqdm: true
+    report_to: azure_ml
+    deepspeed: deepspeed_config.json
