@@ -1,2 +1,5 @@
 # Ignore aml connection configuration
 config.json
+
+# Ignore Ipython Notebook checkpoints
+*.ipynb_checkpoints
