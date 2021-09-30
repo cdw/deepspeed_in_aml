@@ -8,8 +8,11 @@ val_key: validation
 data_dir: data/glue/cola
 source_directory: src # name of dir in which compute nodes will execute cmd
 environment: deepspeed-transformers
+environment_dockerfile: src/dockerfile
 training_command: python train.py
 compute_target: gpu-K80-1
+compute_size: Standard_NC6 # 1 gpu-per-computer
+compute_node_count: 2
 model_output_dir: outputs/model
 registered_model_name: distilbert-base-uncased-cola
 pytorch_configuration:
