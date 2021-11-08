@@ -1,6 +1,6 @@
 model: distilbert-base-uncased
 task: cola # from GLUE
-task_dataset_version: 2 # AzureML dataset version
+task_dataset_version: 1 # AzureML dataset version
 experiment: training-quickstart # name of experiment in AzureML
 description: distilbert for linguistic acceptability
 metric: matthews_correlation
